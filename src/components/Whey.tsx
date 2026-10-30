@@ -118,7 +118,7 @@ export default function Whey() {
             450g, em dois sabores, Chocolate e Milk.
           </p>
 
-          <div className="mt-10 inline-flex rounded-full border border-white/10 bg-white/[0.03] p-1 backdrop-blur-md" role="tablist" aria-label="Sabores">
+          <div className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.03] p-1 backdrop-blur-md" role="tablist" aria-label="Sabores">
             {FLAVORS.map((f) => (
               <button
                 key={f.id}
@@ -138,7 +138,7 @@ export default function Whey() {
           </div>
         </div>
 
-        <div ref={stage} className="relative mx-auto mt-10 flex h-[min(46vh,400px)] max-w-[760px] items-center justify-center md:mt-14">
+        <div ref={stage} className="relative mx-auto mt-10 flex h-[min(40vh,340px)] max-w-[760px] items-center justify-center md:mt-10">
           <div className="absolute bottom-[4%] left-1/2 h-10 w-[60%] -translate-x-1/2 rounded-[50%] bg-black/70 blur-2xl" aria-hidden="true" />
           {webgl && near && (
             <div className="pointer-events-none absolute -inset-y-[18%] left-1/2 w-[100vw] max-w-[1600px] -translate-x-1/2">
@@ -166,12 +166,12 @@ export default function Whey() {
           </AnimatePresence>
         </div>
 
-        <dl className="relative mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:mt-16 lg:grid-cols-4">
+        <dl className="relative mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:mt-10 lg:grid-cols-4">
           {STATS.map((s) => (
-            <div key={s.label} className="bg-ink/90 p-5 backdrop-blur md:p-7">
+            <div key={s.label} className="bg-ink/90 p-4 backdrop-blur md:p-6">
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="display block text-[clamp(33px,3.28vw,50px)]">
+                <span className="display block text-[clamp(28px,2.8vw,42px)]">
                   <Counter to={s.v} decimals={s.v % 1 ? 1 : 0} />
                   <span className="serif-accent text-gold">{s.unit}</span>
                 </span>
@@ -185,9 +185,9 @@ export default function Whey() {
         </p>
 
         {/* campaign */}
-        <Reveal className="relative mt-12 md:mt-14" y={50}>
+        <Reveal className="relative mt-10" y={50}>
           <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-[#141414]">
-            <div className="relative aspect-[4/3] overflow-hidden md:absolute md:inset-y-0 md:right-0 md:aspect-auto md:w-[62%]">
+            <div className="relative aspect-[16/10] overflow-hidden md:absolute md:inset-y-0 md:right-0 md:aspect-auto md:w-[62%]">
               <img
                 src="/assets/whey-lifestyle.webp"
                 alt="Whey Protein Piracanjuba sabor Milk ao lado de uma coqueteleira Piracanjuba"
@@ -197,9 +197,9 @@ export default function Whey() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent md:bg-gradient-to-r md:from-[#141414] md:via-[#141414]/30" />
             </div>
-            <div className="relative flex flex-col justify-center gap-6 p-7 md:min-h-[400px] md:w-[50%] md:p-12">
+            <div className="relative flex flex-col justify-center gap-5 p-6 md:min-h-[320px] md:w-[50%] md:p-10">
               <Eyebrow>Campanha oficial</Eyebrow>
-              <h3 className="display text-[clamp(31px,3.53vw,54px)]">
+              <h3 className="display text-[clamp(28px,3vw,46px)]">
                 O sabor que
                 <br />
                 <span className="serif-accent text-gradient-milk">te impulsiona.</span>

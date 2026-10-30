@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
-import { ArrowUpRight } from 'lucide-react'
-import { gsap, ScrollTrigger, scrollToId } from '../lib/smoothScroll'
+import { useRef } from 'react'
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { scrollToId } from '../lib/smoothScroll'
 import { WA_HELLO } from '../lib/contact'
 import { Eyebrow, Reveal, SplitHeading } from './ui'
 
@@ -59,7 +59,7 @@ function ProductCard({ c }: { c: Card }) {
   return (
     <article
       data-card
-      className={`group relative flex h-[min(62vh,500px)] w-[82vw] shrink-0 snap-center flex-col overflow-hidden rounded-[28px] border border-white/10 sm:w-[440px] lg:w-[min(26vw,380px)] ${
+      className={`group relative flex h-[400px] w-[78vw] shrink-0 snap-start flex-col overflow-hidden rounded-[28px] border border-white/10 sm:w-[320px] lg:h-[420px] lg:w-[300px] ${
         light ? 'text-ink' : 'text-white'
       }`}
       style={{ background: c.bg }}
@@ -94,12 +94,12 @@ function ProductCard({ c }: { c: Card }) {
       </div>
 
       <div className="relative shrink-0 p-6 pt-2 md:p-7 md:pt-2">
-        <h3 className="display text-[clamp(26px,2.23vw,34px)]">{c.title}</h3>
-        <p className={`mt-3 max-w-[340px] text-[15px] leading-relaxed ${light ? 'text-ink/70' : 'text-white/65'}`}>{c.text}</p>
+        <h3 className="display text-[clamp(24px,2vw,30px)]">{c.title}</h3>
+        <p className={`mt-2 max-w-[340px] text-[14px] leading-relaxed ${light ? 'text-ink/70' : 'text-white/65'}`}>{c.text}</p>
         {c.href && (
           <button
             onClick={() => scrollToId(c.href!)}
-            className="mt-6 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-white"
+            className="mt-4 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-white"
           >
             Ver produto em destaque <ArrowUpRight className="h-4 w-4" />
           </button>
@@ -110,80 +110,42 @@ function ProductCard({ c }: { c: Card }) {
 }
 
 export default function Products() {
-  const root = useRef<HTMLElement>(null)
   const track = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const mm = gsap.matchMedia()
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-      const el = track.current!
-      const distance = () => el.scrollWidth - window.innerWidth + 48
-      const tween = gsap.to(el, {
-        x: () => -distance(),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: root.current,
-          start: 'top top',
-          end: () => `+=${distance()}`,
-          pin: true,
-          scrub: 0.8,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-        },
-      })
-      gsap.utils.toArray<HTMLElement>('[data-art]', el).forEach((art) => {
-        gsap.fromTo(
-          art,
-          { xPercent: 18, rotate: 4 },
-          {
-            xPercent: -18,
-            rotate: -4,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: art.closest('[data-card]'),
-              containerAnimation: tween,
-              start: 'left right',
-              end: 'right left',
-              scrub: true,
-            },
-          }
-        )
-      })
-      return () => ScrollTrigger.refresh()
-    })
-    return () => mm.revert()
-  }, [])
+  const nudge = (dir: number) => track.current?.scrollBy({ left: dir * Math.min(360, window.innerWidth * 0.8), behavior: 'smooth' })
 
   return (
-    <section ref={root} id="produtos" className="relative overflow-hidden bg-ink lg:h-screen" aria-labelledby="prod-title">
+    <section id="produtos" className="relative overflow-hidden bg-ink py-14 md:py-16" aria-labelledby="prod-title">
       <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_20%_30%,rgba(16,43,89,0.45),transparent_70%)]" />
-      <div className="relative flex h-full flex-col justify-center py-24 lg:py-0">
-        <div
-          ref={track}
-          className="flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-5 pb-6 [scrollbar-width:none] sm:px-8 lg:snap-none lg:gap-8 lg:overflow-visible lg:px-12 lg:pb-0 [&::-webkit-scrollbar]:hidden"
-        >
-          <div className="w-[86vw] shrink-0 snap-start pr-4 sm:w-[480px] lg:w-[min(32vw,420px)] lg:pr-10">
+      <div className="relative">
+        <div className="container-x mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
             <Eyebrow>Universo Piracanjuba</Eyebrow>
             <SplitHeading
             id="prod-title"
-              lines={['Um portfólio', 'que move', <span className="serif-accent text-gradient-milk">prateleiras.</span>]}
-              className="display mt-6 text-[clamp(33px,3.67vw,58px)]"
+              lines={['Um portfólio que move', <span className="serif-accent text-gradient-milk">prateleiras.</span>]}
+              className="display mt-5 text-[clamp(30px,3.2vw,50px)]"
             />
             <Reveal delay={0.15}>
-              <p className="mt-8 max-w-[420px] text-[16px] leading-relaxed text-white/60">
+              <p className="mt-5 max-w-[520px] text-[15px] leading-relaxed text-white/60">
                 Categorias do portfólio Piracanjuba apresentadas pela Nogueira Representações. Consulte com Angelo
                 Nogueira os produtos disponíveis para o seu estabelecimento.
               </p>
             </Reveal>
-            <p className="mt-10 hidden text-[11px] uppercase tracking-mega text-mist lg:block">Role para explorar →</p>
-            <p className="mt-6 text-[11px] uppercase tracking-mega text-mist lg:hidden">Deslize para explorar →</p>
+            </div>
+            <div className="hidden shrink-0 gap-2 md:flex">
+              <button onClick={() => nudge(-1)} aria-label="Anterior" className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition-colors hover:border-gold hover:text-gold"><ArrowLeft className="h-4 w-4" /></button>
+              <button onClick={() => nudge(1)} aria-label="Próximo" className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition-colors hover:border-gold hover:text-gold"><ArrowRight className="h-4 w-4" /></button>
+            </div>
           </div>
-
+        <div
+          ref={track}
+          className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:px-8 lg:gap-5 lg:px-[max(3rem,calc((100vw-1240px)/2))] [&::-webkit-scrollbar]:hidden"
+        >
           {CARDS.map((c) => (
             <ProductCard key={c.n} c={c} />
           ))}
 
-          <div className="flex h-[min(62vh,500px)] w-[82vw] shrink-0 snap-center flex-col justify-between rounded-[28px] border border-gold/30 p-9 sm:w-[400px] lg:w-[min(22vw,320px)]">
+          <div className="flex h-[400px] w-[78vw] shrink-0 snap-start flex-col justify-between rounded-[28px] border border-gold/30 p-7 sm:w-[300px] lg:h-[420px] lg:w-[280px]">
             <span className="text-xs uppercase tracking-mega text-gold">Portfólio completo</span>
             <div>
               <p className="display text-[clamp(24px,1.97vw,30px)]">

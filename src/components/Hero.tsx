@@ -79,7 +79,7 @@ export default function Hero() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-ink via-ink/80 to-transparent md:hidden" />
         <div className="relative max-w-[700px]">
           <motion.p
-            className="eyebrow mb-5 whitespace-nowrap max-sm:text-[9.5px] max-sm:tracking-[0.22em] md:mb-8"
+            className="eyebrow mb-5 hidden whitespace-nowrap sm:flex md:mb-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 1.4, ease }}
@@ -105,7 +105,7 @@ export default function Hero() {
           </h1>
 
           <motion.p
-            className="mt-6 max-w-[460px] text-[15px] leading-relaxed text-white/65 md:mt-7 md:text-[16px]"
+            className="mt-6 max-w-[460px] text-[15px] leading-relaxed text-white/65 max-md:[@media(max-height:720px)]:hidden md:mt-7 md:text-[16px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 2.0, ease }}

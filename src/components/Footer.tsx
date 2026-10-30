@@ -25,7 +25,6 @@ export default function Footer() {
                 ['tangara', 'Tangará Química'],
                 ['petyan', 'Petyan'],
                 ['empresa', 'A Nogueira'],
-                ['representacao', 'Representação'],
                 ['contato', 'Contato'],
               ].map(([id, l]) => (
                 <li key={id}>

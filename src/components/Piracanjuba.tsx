@@ -26,9 +26,6 @@ export default function Piracanjuba() {
         { y: 80, rotate: -4 },
         { y: -40, rotate: 0, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: true } }
       )
-      gsap.utils.toArray<HTMLElement>('[data-pillar-line]').forEach((el) => {
-        gsap.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%' } })
-      })
     }, root)
     return () => ctx.revert()
   }, [])
@@ -49,14 +46,14 @@ export default function Piracanjuba() {
         />
       </svg>
 
-      <div className="container-x relative pb-16 pt-24 md:pb-20 md:pt-28">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
+      <div className="container-x relative pb-14 pt-20 md:pb-16 md:pt-24">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
             <Eyebrow className="!text-ink/60">Piracanjuba · Lácteos</Eyebrow>
             <SplitHeading
             id="pira-title"
               lines={['Qualidade que', 'conquista', <span className="serif-accent text-navy">o Brasil.</span>]}
-              className="display mt-6 text-[clamp(37px,4.85vw,81px)]"
+              className="display mt-6 text-[clamp(34px,4.2vw,68px)]"
             />
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-[480px] text-[16px] leading-relaxed text-ink/70">
@@ -66,14 +63,14 @@ export default function Piracanjuba() {
             </Reveal>
           </div>
 
-          <div className="relative lg:col-span-6">
-            <div data-logo className="relative mx-auto aspect-[4/5] w-full max-w-[340px]">
+          <div className="relative hidden md:block lg:col-span-6">
+            <div data-logo className="relative mx-auto aspect-[4/5] w-full max-w-[220px] md:max-w-[280px]">
               <div className="absolute inset-0 rounded-[36px] bg-white shadow-[0_60px_120px_-40px_rgba(16,43,89,0.45)]" />
               <div className="absolute inset-0 overflow-hidden rounded-[36px]">
                 <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-navy/[0.06]" />
                 <div className="absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-gold/[0.12] blur-2xl" />
               </div>
-              <div className="relative flex h-full flex-col items-center justify-center gap-10 p-10">
+              <div className="relative flex h-full flex-col items-center justify-center gap-6 p-7">
                 <img
                   src="/assets/pira-color.webp"
                   alt="Logotipo Piracanjuba Pro Force"
@@ -93,18 +90,13 @@ export default function Piracanjuba() {
           </div>
         </div>
 
-        <ol className="mt-12 md:mt-14">
-          {PILLARS.map((p, i) => (
-            <li key={p.t} className="relative">
-              <span data-pillar-line className="absolute inset-x-0 top-0 h-px origin-left bg-ink/15" />
-              <Reveal className="grid items-baseline gap-3 py-5 md:grid-cols-12 md:gap-8 md:py-5" y={24}>
-                <span className="text-xs tabular-nums text-ink/40 md:col-span-1">0{i + 1}</span>
-                <h3 className="display text-[clamp(26px,3.02vw,47px)] md:col-span-6">{p.t}</h3>
-                <p className="max-w-[420px] text-[15px] leading-relaxed text-ink/60 md:col-span-5">{p.d}</p>
-              </Reveal>
+        <ul className="mt-10 flex flex-wrap gap-2 md:mt-12">
+          {PILLARS.map((p) => (
+            <li key={p.t} className="rounded-full border border-ink/15 px-4 py-2 text-[13px] text-ink/70">
+              {p.t}
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )

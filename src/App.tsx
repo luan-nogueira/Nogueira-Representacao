@@ -9,7 +9,6 @@ import Piracanjuba from './components/Piracanjuba'
 import Products from './components/Products'
 import Whey from './components/Whey'
 import About from './components/About'
-import Partnership from './components/Partnership'
 import Region from './components/Region'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -47,7 +46,6 @@ export default function App() {
         <BrandShowcase brand={TANGARA} />
         <BrandShowcase brand={PETYAN} />
         <About />
-        <Partnership />
         <Region />
         <Contact />
       </main>

@@ -1,13 +1,15 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { BadgeCheck, HeartHandshake, ShieldCheck, Target } from 'lucide-react'
-import { Eyebrow, Reveal, SplitHeading } from './ui'
+import { ArrowUpRight, Award, Handshake, MapPin, UserRound } from 'lucide-react'
+import { WA_PARTNERSHIP } from '../lib/contact'
+import { WhatsAppIcon } from './Icons'
+import { Eyebrow, Magnetic, Reveal, SplitHeading } from './ui'
 
 const VALUES = [
-  { icon: BadgeCheck, t: 'Profissionalismo', d: 'Postura comercial séria e transparente em cada negociação.' },
-  { icon: HeartHandshake, t: 'Proximidade', d: 'Atendimento de perto, com quem conhece o mercado local.' },
-  { icon: ShieldCheck, t: 'Confiança', d: 'Relacionamentos construídos para durar.' },
-  { icon: Target, t: 'Compromisso', d: 'Dedicação real aos resultados de cada parceiro.' },
+  { icon: Handshake, t: 'Relacionamento comercial', d: 'Uma relação próxima e contínua com cada estabelecimento parceiro.' },
+  { icon: UserRound, t: 'Atendimento personalizado', d: 'Cada negócio tem sua realidade, e o atendimento acompanha isso.' },
+  { icon: Award, t: 'Marcas reconhecidas', d: 'Marcas que o consumidor já conhece e procura.' },
+  { icon: MapPin, t: 'Proximidade regional', d: 'Presença em Campos dos Goytacazes e região, perto de quem compra.' },
 ]
 
 function TiltEmblem() {
@@ -21,7 +23,7 @@ function TiltEmblem() {
   return (
     <div
       ref={ref}
-      className="relative mx-auto aspect-square w-full max-w-[340px] [perspective:1200px]"
+      className="relative mx-auto aspect-square w-full max-w-[300px] [perspective:1200px]"
       onPointerMove={(e) => {
         const r = ref.current!.getBoundingClientRect()
         mx.set((e.clientX - r.left) / r.width - 0.5)
@@ -65,12 +67,12 @@ export default function About() {
   return (
     <section id="empresa" className="relative overflow-hidden bg-ink py-16 md:py-20" aria-labelledby="about-title">
       <div className="absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-navy/40 blur-[120px]" aria-hidden="true" />
-      <div className="container-x relative grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
-        <div className="order-2 lg:order-1 lg:col-span-5">
+      <div className="container-x relative grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="hidden lg:col-span-5 lg:block">
           <TiltEmblem />
         </div>
 
-        <div className="order-1 lg:order-2 lg:col-span-7 lg:pl-8">
+        <div className="lg:col-span-7 lg:pl-8">
           <Eyebrow>Nogueira Representações</Eyebrow>
           <SplitHeading
             id="about-title"
@@ -79,38 +81,52 @@ export default function About() {
               'representar marcas.',
               <span className="serif-accent text-gradient-milk">Construir grandes parcerias.</span>,
             ]}
-            className="display mt-6 text-[clamp(31px,3.41vw,55px)]"
+            className="display mt-5 text-[clamp(30px,3.2vw,50px)]"
           />
           <Reveal delay={0.15}>
-            <p className="mt-8 max-w-[560px] text-[16px] leading-relaxed text-white/70">
+            <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-white/70">
               A Nogueira Representações atua conectando grandes marcas ao mercado regional, desenvolvendo
               relacionamentos comerciais sólidos e aproximando produtos de qualidade dos estabelecimentos e
-              consumidores.
+              consumidores. Para empresários e estabelecimentos que querem trabalhar com marcas fortes, com o apoio
+              de quem conhece o mercado regional.
             </p>
           </Reveal>
 
           <Reveal delay={0.25}>
-            <figure className="mt-12 flex items-center gap-6 border-l border-gold/60 pl-6">
+            <figure className="mt-8 flex items-center gap-6 border-l border-gold/60 pl-6">
               <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br from-gold to-[#8c7344] text-lg font-semibold text-ink">
                 AN
               </div>
               <figcaption>
                 <p className="text-xl font-semibold tracking-tight">Angelo Nogueira</p>
-                <p className="mt-1 text-[14px] text-mist">Responsável pela Nogueira Representações · Representante comercial Piracanjuba</p>
+                <p className="mt-1 text-[14px] text-mist">Responsável pela Nogueira Representações · Representante comercial</p>
               </figcaption>
             </figure>
           </Reveal>
         </div>
       </div>
 
-      <div className="container-x relative mt-24 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:mt-32 lg:grid-cols-4">
+      <div className="container-x relative mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 grid-cols-2 lg:mt-14 lg:grid-cols-4">
         {VALUES.map((v, i) => (
-          <Reveal key={v.t} delay={i * 0.08} y={30} className="group bg-ink p-8 transition-colors duration-700 hover:bg-[#0d1626] md:p-10">
-            <v.icon className="h-6 w-6 text-gold transition-transform duration-700 group-hover:-translate-y-1" strokeWidth={1.4} />
-            <h3 className="mt-8 text-xl font-semibold tracking-tight">{v.t}</h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-white/55">{v.d}</p>
+          <Reveal key={v.t} delay={i * 0.08} y={30} className="group bg-ink p-4 transition-colors duration-700 hover:bg-[#0d1626] sm:p-6 md:p-7">
+            <v.icon className="h-5 w-5 text-gold transition-transform duration-700 group-hover:-translate-y-1" strokeWidth={1.5} />
+            <h3 className="mt-4 text-[15px] font-semibold leading-tight tracking-tight sm:text-lg">{v.t}</h3>
+            <p className="mt-2 text-[13px] leading-relaxed text-white/55 sm:text-[14px]">{v.d}</p>
           </Reveal>
         ))}
+      </div>
+
+      <div className="container-x relative">
+        <Reveal className="mt-6 flex flex-col items-start justify-between gap-6 rounded-[28px] border border-gold/30 bg-gradient-to-r from-navy/60 to-transparent p-6 md:flex-row md:items-center md:p-8">
+          <p className="display max-w-[620px] text-[clamp(22px,1.97vw,29px)]">
+            Vamos conversar sobre o <span className="serif-accent">seu negócio?</span>
+          </p>
+          <Magnetic href={WA_PARTNERSHIP} target="_blank" rel="noopener noreferrer" className="btn btn-primary group shrink-0">
+            <WhatsAppIcon className="h-4 w-4" />
+            Quero conversar sobre uma parceria
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Magnetic>
+        </Reveal>
       </div>
     </section>
   )

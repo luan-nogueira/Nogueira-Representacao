@@ -96,6 +96,9 @@ function Rig({
   const { camera, size } = useThree()
   const mouse = useRef({ x: 0, y: 0 })
   const narrow = size.width < 768
+  // On short phone screens pull back so the pack stays above the headline.
+  const f = narrow ? Math.max(1, size.width / size.height / 0.46) : 1
+  const lookY = narrow ? 1.45 - 3.05 * f : 1.75
 
   useEffect(() => {
     const on = (e: PointerEvent) => {
@@ -131,9 +134,9 @@ function Rig({
     g.position.x = THREE.MathUtils.lerp(g.position.x, baseX - scroll * 0.6, k)
     g.position.y = THREE.MathUtils.lerp(g.position.y, (narrow ? 0 : -0.1) + scroll * 1.1, k)
     camera.position.x = THREE.MathUtils.lerp(camera.position.x, mx * 0.35, k)
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, (narrow ? -0.75 : 1.7) - my * 0.2, k)
-    camera.position.z = THREE.MathUtils.lerp(camera.position.z, (narrow ? 21 : 12.8) - scroll * 1.8, k)
-    camera.lookAt(narrow ? 0 : 0.2, narrow ? -0.9 : 1.75, 0)
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, (narrow ? lookY + 0.15 : 1.7) - my * 0.2, k)
+    camera.position.z = THREE.MathUtils.lerp(camera.position.z, (narrow ? 21 * f : 12.8) - scroll * 1.8, k)
+    camera.lookAt(narrow ? 0 : 0.2, lookY, 0)
     const fog = state.scene.fog as THREE.Fog | null
     if (fog) {
       fog.near = camera.position.z - 1.5
