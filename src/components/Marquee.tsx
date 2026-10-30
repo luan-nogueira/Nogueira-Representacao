@@ -1,4 +1,4 @@
-const WORDS = ['Grandes marcas', 'Grandes conexões', 'Piracanjuba', 'Campos dos Goytacazes — RJ', 'Representação comercial']
+const WORDS = ['Piracanjuba', 'Grandes marcas', 'Tangará Química', 'Grandes conexões', 'Petyan', 'Campos dos Goytacazes — RJ']
 
 export default function Marquee() {
   const row = [...WORDS, ...WORDS]

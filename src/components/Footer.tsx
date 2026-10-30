@@ -19,9 +19,11 @@ export default function Footer() {
             <p className="text-[11px] uppercase tracking-mega text-mist">Navegação</p>
             <ul className="mt-6 space-y-3 text-[15px] text-white/70">
               {[
+                ['marcas', 'Marcas'],
                 ['piracanjuba', 'Piracanjuba'],
-                ['produtos', 'Produtos'],
                 ['whey', 'Whey Protein'],
+                ['tangara', 'Tangará Química'],
+                ['petyan', 'Petyan'],
                 ['empresa', 'A Nogueira'],
                 ['representacao', 'Representação'],
                 ['contato', 'Contato'],
@@ -60,7 +62,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-3 py-8 text-[12px] text-white/40 md:flex-row md:items-center md:justify-between">
           <p>© {year} Nogueira Representações. Todos os direitos reservados.</p>
-          <p>Piracanjuba e suas marcas pertencem aos respectivos titulares.</p>
+          <p>Piracanjuba, Tangará Química, Flop´s, Petyan, Supradely e Spaguetto pertencem aos respectivos titulares.</p>
         </div>
       </div>
       <div

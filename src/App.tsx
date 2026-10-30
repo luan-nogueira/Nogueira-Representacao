@@ -13,6 +13,9 @@ import Partnership from './components/Partnership'
 import Region from './components/Region'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Brands from './components/Brands'
+import BrandShowcase from './components/BrandShowcase'
+import { PETYAN, TANGARA } from './data/brands'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 export default function App() {
@@ -37,9 +40,12 @@ export default function App() {
       <main id="conteudo">
         <Hero />
         <Marquee />
+        <Brands />
         <Piracanjuba />
         <Products />
         <Whey />
+        <BrandShowcase brand={TANGARA} />
+        <BrandShowcase brand={PETYAN} />
         <About />
         <Partnership />
         <Region />

@@ -6,11 +6,11 @@ import { WA_HELLO } from '../lib/contact'
 import { WhatsAppIcon } from './Icons'
 
 const LINKS = [
+  { id: 'marcas', label: 'Marcas' },
   { id: 'piracanjuba', label: 'Piracanjuba' },
-  { id: 'produtos', label: 'Produtos' },
-  { id: 'whey', label: 'Whey Protein' },
+  { id: 'tangara', label: 'Tangará' },
+  { id: 'petyan', label: 'Petyan' },
   { id: 'empresa', label: 'A Nogueira' },
-  { id: 'regiao', label: 'Região' },
   { id: 'contato', label: 'Contato' },
 ]
 
@@ -57,7 +57,7 @@ export default function Nav() {
             <img src="/assets/nr-white.webp" alt="Nogueira Representações" width={400} height={484} className="h-10 w-auto lg:h-11" />
           </a>
 
-          <ul className="hidden items-center gap-9 lg:flex">
+          <ul className="hidden items-center gap-7 lg:flex">
             {LINKS.map((l) => (
               <li key={l.id}>
                 <a

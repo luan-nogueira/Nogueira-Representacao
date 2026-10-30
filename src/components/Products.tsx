@@ -163,7 +163,7 @@ export default function Products() {
           className="flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-5 pb-6 [scrollbar-width:none] sm:px-8 lg:snap-none lg:gap-8 lg:overflow-visible lg:px-12 lg:pb-0 [&::-webkit-scrollbar]:hidden"
         >
           <div className="w-[86vw] shrink-0 snap-start pr-4 sm:w-[480px] lg:w-[min(32vw,420px)] lg:pr-10">
-            <Eyebrow>Universo de produtos</Eyebrow>
+            <Eyebrow>Universo Piracanjuba</Eyebrow>
             <SplitHeading
             id="prod-title"
               lines={['Um portfólio', 'que move', <span className="serif-accent text-gradient-milk">prateleiras.</span>]}

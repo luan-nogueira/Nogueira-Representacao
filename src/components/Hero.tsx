@@ -84,7 +84,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 1.4, ease }}
           >
-            Representação comercial Piracanjuba
+            Representação comercial multimarcas
           </motion.p>
 
           <h1>
@@ -120,10 +120,10 @@ export default function Hero() {
             transition={{ duration: 1.1, delay: 2.15, ease }}
           >
             <Magnetic
-              href="#piracanjuba"
+              href="#marcas"
               onClick={(e) => {
                 e.preventDefault()
-                scrollToId('piracanjuba')
+                scrollToId('marcas')
               }}
               className="btn btn-primary group pointer-events-auto"
             >
@@ -147,11 +147,12 @@ export default function Hero() {
         <div className="container-x flex items-center justify-between border-t border-white/[0.07] py-5 text-[11px] uppercase tracking-[0.24em] text-mist">
           <span className="hidden md:block">Grandes marcas. Grandes conexões.</span>
           <span className="flex items-center gap-4">
-            <span className="hidden sm:inline">Marca representada</span>
-            <img src="/assets/pira-white.webp" alt="Piracanjuba Pro Force" className="h-9 w-auto opacity-90" width={400} height={498} />
+            <span className="hidden sm:inline">Marcas</span>
+            <span className="normal-case tracking-normal text-white/80 max-sm:hidden">Piracanjuba · Tangará Química · Petyan</span>
+            <span className="normal-case tracking-normal text-white/80 sm:hidden">3 marcas representadas</span>
           </span>
           <button
-            onClick={() => scrollToId('piracanjuba')}
+            onClick={() => scrollToId('marcas')}
             className="flex items-center gap-3 transition-colors hover:text-white"
             aria-label="Rolar para a próxima seção"
           >

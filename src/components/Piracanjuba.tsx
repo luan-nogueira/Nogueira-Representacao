@@ -52,7 +52,7 @@ export default function Piracanjuba() {
       <div className="container-x relative pb-16 pt-24 md:pb-20 md:pt-28">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
-            <Eyebrow className="!text-ink/60">A marca representada</Eyebrow>
+            <Eyebrow className="!text-ink/60">Piracanjuba · Lácteos</Eyebrow>
             <SplitHeading
             id="pira-title"
               lines={['Qualidade que', 'conquista', <span className="serif-accent text-navy">o Brasil.</span>]}
@@ -60,8 +60,8 @@ export default function Piracanjuba() {
             />
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-[480px] text-[16px] leading-relaxed text-ink/70">
-                A Piracanjuba é a principal marca representada pela Nogueira Representações. Uma marca que
-                carrega qualidade, tradição e confiança, e que merece uma presença à altura no mercado regional.
+                A Piracanjuba, uma das marcas representadas pela Nogueira Representações, carrega qualidade,
+                tradição e confiança, e merece uma presença à altura no mercado regional.
               </p>
             </Reveal>
           </div>
