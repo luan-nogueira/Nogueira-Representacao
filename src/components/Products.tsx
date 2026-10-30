@@ -33,7 +33,7 @@ const CARDS: Card[] = [
     n: '03',
     title: 'Whey Protein',
     text: 'O novo integrante da linha: Whey Protein Piracanjuba, nos sabores Chocolate e Milk.',
-    img: '/assets/jars.webp',
+    img: '/assets/whey-choc-proforce.webp',
     bg: 'radial-gradient(120% 80% at 50% 25%, #2a2a2a 0%, #141414 50%, #090909 100%)',
     official: true,
     href: 'whey',
@@ -59,13 +59,13 @@ function ProductCard({ c }: { c: Card }) {
   return (
     <article
       data-card
-      className={`group relative flex h-[min(70vh,580px)] w-[82vw] shrink-0 snap-center flex-col overflow-hidden rounded-[28px] border border-white/10 sm:w-[440px] lg:w-[min(30vw,440px)] ${
+      className={`group relative flex h-[min(62vh,500px)] w-[82vw] shrink-0 snap-center flex-col overflow-hidden rounded-[28px] border border-white/10 sm:w-[440px] lg:w-[min(26vw,380px)] ${
         light ? 'text-ink' : 'text-white'
       }`}
       style={{ background: c.bg }}
     >
       <div className="grain absolute inset-0" />
-      <div className="relative flex items-start justify-between p-7 md:p-9">
+      <div className="relative flex items-start justify-between p-6 md:p-7">
         <span className={`text-xs tabular-nums ${light ? 'text-ink/50' : 'text-white/50'}`}>{c.n} / 05</span>
         <span
           className={`rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.2em] ${
@@ -84,17 +84,17 @@ function ProductCard({ c }: { c: Card }) {
         <img
           data-art
           src={c.img}
-          alt={c.official ? 'Whey Protein Piracanjuba 450g, sabores Chocolate e Milk' : ''}
+          alt={c.official ? 'Whey Protein Piracanjuba Pro Force 450g sabor Chocolate' : ''}
           loading="lazy"
           decoding="async"
           className={`relative h-full max-h-full w-auto max-w-[92%] object-contain transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.06] ${
-            c.official ? 'rounded-2xl [mask-image:radial-gradient(closest-side,black_78%,transparent)]' : 'drop-shadow-[0_40px_40px_rgba(0,0,0,0.45)]'
+            'drop-shadow-[0_40px_40px_rgba(0,0,0,0.45)]'
           }`}
         />
       </div>
 
-      <div className="relative shrink-0 p-7 pt-2 md:p-9 md:pt-2">
-        <h3 className="display text-[clamp(29px,2.65vw,41px)]">{c.title}</h3>
+      <div className="relative shrink-0 p-6 pt-2 md:p-7 md:pt-2">
+        <h3 className="display text-[clamp(26px,2.23vw,34px)]">{c.title}</h3>
         <p className={`mt-3 max-w-[340px] text-[15px] leading-relaxed ${light ? 'text-ink/70' : 'text-white/65'}`}>{c.text}</p>
         {c.href && (
           <button
@@ -162,12 +162,12 @@ export default function Products() {
           ref={track}
           className="flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-5 pb-6 [scrollbar-width:none] sm:px-8 lg:snap-none lg:gap-8 lg:overflow-visible lg:px-12 lg:pb-0 [&::-webkit-scrollbar]:hidden"
         >
-          <div className="w-[86vw] shrink-0 snap-start pr-4 sm:w-[480px] lg:w-[min(36vw,480px)] lg:pr-10">
+          <div className="w-[86vw] shrink-0 snap-start pr-4 sm:w-[480px] lg:w-[min(32vw,420px)] lg:pr-10">
             <Eyebrow>Universo de produtos</Eyebrow>
             <SplitHeading
             id="prod-title"
               lines={['Um portfólio', 'que move', <span className="serif-accent text-gradient-milk">prateleiras.</span>]}
-              className="display mt-8 text-[clamp(37px,4.37vw,69px)]"
+              className="display mt-6 text-[clamp(33px,3.67vw,58px)]"
             />
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-[420px] text-[16px] leading-relaxed text-white/60">
@@ -176,17 +176,17 @@ export default function Products() {
               </p>
             </Reveal>
             <p className="mt-10 hidden text-[11px] uppercase tracking-mega text-mist lg:block">Role para explorar →</p>
-            <p className="mt-8 text-[11px] uppercase tracking-mega text-mist lg:hidden">Deslize para explorar →</p>
+            <p className="mt-6 text-[11px] uppercase tracking-mega text-mist lg:hidden">Deslize para explorar →</p>
           </div>
 
           {CARDS.map((c) => (
             <ProductCard key={c.n} c={c} />
           ))}
 
-          <div className="flex h-[min(70vh,580px)] w-[82vw] shrink-0 snap-center flex-col justify-between rounded-[28px] border border-gold/30 p-9 sm:w-[400px] lg:w-[min(26vw,380px)]">
+          <div className="flex h-[min(62vh,500px)] w-[82vw] shrink-0 snap-center flex-col justify-between rounded-[28px] border border-gold/30 p-9 sm:w-[400px] lg:w-[min(22vw,320px)]">
             <span className="text-xs uppercase tracking-mega text-gold">Portfólio completo</span>
             <div>
-              <p className="display text-[clamp(27px,2.34vw,36px)]">
+              <p className="display text-[clamp(24px,1.97vw,30px)]">
                 Quer conhecer <span className="serif-accent">todo</span> o portfólio?
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-white/60">

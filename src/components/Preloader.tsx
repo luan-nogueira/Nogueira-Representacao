@@ -34,7 +34,7 @@ export default function Preloader() {
             <motion.img
               src="/assets/nr-white.webp"
               alt=""
-              className="h-24 w-auto"
+              className="h-20 w-auto"
               initial={{ opacity: 0, scale: 0.92, filter: 'blur(8px)' }}
               animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}

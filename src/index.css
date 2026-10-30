@@ -17,14 +17,14 @@
 }
 
 @layer components {
-  .container-x { @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12; }
+  .container-x { @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10; }
   .eyebrow { @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-mega text-mist; }
   .eyebrow::before { content: ''; @apply block h-px w-8 bg-gold; }
   .display { @apply font-sans font-semibold tracking-[-0.035em] leading-[0.95]; }
   .serif-accent { @apply font-serif italic font-normal tracking-[-0.01em]; }
   .hairline { @apply border-white/10; }
   .btn {
-    @apply relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-4 text-sm font-medium tracking-wide transition-colors duration-500;
+    @apply relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-6 py-3.5 text-[13px] font-medium tracking-wide transition-colors duration-500;
   }
   .btn-primary { @apply bg-white text-ink; }
   .btn-primary:hover { @apply bg-gold; }

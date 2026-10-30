@@ -6,12 +6,12 @@ import { InstagramIcon, WhatsAppIcon } from './Icons'
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="relative overflow-hidden bg-ink pt-24">
+    <footer className="relative overflow-hidden bg-ink pt-20">
       <div className="container-x">
         <div className="grid gap-14 border-b border-white/10 pb-16 md:grid-cols-12">
           <div className="md:col-span-5">
-            <img src="/assets/nr-white.webp" alt="Nogueira Representações" width={400} height={484} loading="lazy" className="h-24 w-auto" />
-            <p className="mt-8 text-[clamp(22px,2.03vw,30px)] font-semibold leading-tight tracking-tight">
+            <img src="/assets/nr-white.webp" alt="Nogueira Representações" width={400} height={484} loading="lazy" className="h-20 w-auto" />
+            <p className="mt-6 text-[clamp(20px,1.71vw,25px)] font-semibold leading-tight tracking-tight">
               Marcas que fazem <span className="serif-accent font-normal text-gold">a diferença.</span>
             </p>
           </div>

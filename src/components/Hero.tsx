@@ -93,7 +93,7 @@ export default function Hero() {
                 Nogueira Representações
               </motion.span>
             </span>
-            <span className="display block text-[clamp(36px,4.29vw,72px)]">
+            <span className="display block text-[clamp(32px,3.6vw,60px)]">
               {['Grandes marcas', 'merecem grandes', 'representações.'].map((t, i) => (
                 <span key={t} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                   <motion.span className="block" {...line(0.08 + i * 0.09)}>

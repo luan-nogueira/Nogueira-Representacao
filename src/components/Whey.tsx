@@ -90,7 +90,7 @@ export default function Whey() {
   }, [])
 
   return (
-    <section ref={root} id="whey" className="grain relative overflow-hidden bg-ink py-20 md:py-24" aria-labelledby="whey-title">
+    <section ref={root} id="whey" className="grain relative overflow-hidden bg-ink py-16 md:py-20" aria-labelledby="whey-title">
       <motion.div className="absolute inset-0" animate={{ background: BG[flavor] }} transition={{ duration: 1.2 }} />
       <div
         data-whey-word
@@ -111,7 +111,7 @@ export default function Whey() {
                 Whey Protein <span className="serif-accent text-gradient-milk">Piracanjuba.</span>
               </>,
             ]}
-            className="display mt-6 text-[clamp(34px,4.68vw,75px)]"
+            className="display mt-6 text-[clamp(31px,3.93vw,63px)]"
           />
           <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-white/60">
             A linha Piracanjuba ganhou um novo integrante: Whey Protein, suplemento alimentar em pó na embalagem de
@@ -138,7 +138,7 @@ export default function Whey() {
           </div>
         </div>
 
-        <div ref={stage} className="relative mx-auto mt-10 flex h-[min(52vh,460px)] max-w-[760px] items-center justify-center md:mt-14">
+        <div ref={stage} className="relative mx-auto mt-10 flex h-[min(46vh,400px)] max-w-[760px] items-center justify-center md:mt-14">
           <div className="absolute bottom-[4%] left-1/2 h-10 w-[60%] -translate-x-1/2 rounded-[50%] bg-black/70 blur-2xl" aria-hidden="true" />
           {webgl && near && (
             <div className="pointer-events-none absolute -inset-y-[18%] left-1/2 w-[100vw] max-w-[1600px] -translate-x-1/2">
@@ -156,7 +156,7 @@ export default function Whey() {
               className={`relative z-10 max-h-full w-auto max-w-full object-contain ${
                 current.cutout
                   ? 'drop-shadow-[0_40px_50px_rgba(0,0,0,0.6)]'
-                  : '[mask-image:radial-gradient(closest-side,black_80%,transparent)]'
+                  : 'rounded-[28px] border border-white/10 shadow-[0_50px_80px_-30px_rgba(0,0,0,0.8)]'
               }`}
               initial={{ opacity: 0, scale: 0.94, y: 20, filter: 'blur(10px)' }}
               animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
@@ -171,7 +171,7 @@ export default function Whey() {
             <div key={s.label} className="bg-ink/90 p-5 backdrop-blur md:p-7">
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="display block text-[clamp(37px,3.9vw,59px)]">
+                <span className="display block text-[clamp(33px,3.28vw,50px)]">
                   <Counter to={s.v} decimals={s.v % 1 ? 1 : 0} />
                   <span className="serif-accent text-gold">{s.unit}</span>
                 </span>
@@ -185,9 +185,9 @@ export default function Whey() {
         </p>
 
         {/* campaign */}
-        <Reveal className="relative mt-16 md:mt-20" y={50}>
+        <Reveal className="relative mt-12 md:mt-14" y={50}>
           <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-[#141414]">
-            <div className="relative aspect-[4/3] md:absolute md:inset-y-0 md:right-0 md:aspect-auto md:w-[62%]">
+            <div className="relative aspect-[4/3] overflow-hidden md:absolute md:inset-y-0 md:right-0 md:aspect-auto md:w-[62%]">
               <img
                 src="/assets/whey-lifestyle.webp"
                 alt="Whey Protein Piracanjuba sabor Milk ao lado de uma coqueteleira Piracanjuba"
@@ -197,9 +197,9 @@ export default function Whey() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent md:bg-gradient-to-r md:from-[#141414] md:via-[#141414]/30" />
             </div>
-            <div className="relative flex flex-col justify-center gap-6 p-7 md:min-h-[480px] md:w-[50%] md:p-12">
+            <div className="relative flex flex-col justify-center gap-6 p-7 md:min-h-[400px] md:w-[50%] md:p-12">
               <Eyebrow>Campanha oficial</Eyebrow>
-              <h3 className="display text-[clamp(34px,4.2vw,64px)]">
+              <h3 className="display text-[clamp(31px,3.53vw,54px)]">
                 O sabor que
                 <br />
                 <span className="serif-accent text-gradient-milk">te impulsiona.</span>

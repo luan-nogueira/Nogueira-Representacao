@@ -1,9 +1,9 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import { ContactShadows, Sparkles } from '@react-three/drei'
-import { ChocolateField, Droplets, MilkCarton, MilkRibbon, Studio, type ChunkSpec } from './Elements'
-import { featherTexture, radialTexture } from './geometries'
+import { Sparkles } from '@react-three/drei'
+import { ChocolateField, Droplets, MilkRibbon, Studio, type ChunkSpec } from './Elements'
+import { radialTexture } from './geometries'
 
 const CHUNKS_DESKTOP: ChunkSpec[] = [
   { pos: [-1.9, 2.9, 0.6], rot: [0.6, 0.3, 0.2], scale: 0.85, speed: 0.9 },
@@ -16,31 +16,45 @@ const CHUNKS_DESKTOP: ChunkSpec[] = [
 ]
 const CHUNKS_LITE = CHUNKS_DESKTOP.filter((_, i) => i < 5)
 
-function JarsPlane({ lite }: { lite: boolean }) {
-  const tex = useLoader(THREE.TextureLoader, '/assets/jars.webp')
-  const alpha = useMemo(() => featherTexture(0.12, 0.2), [])
+/** Official pack shots (transparent images) placed in the scene as soft-lit billboards. */
+export const HERO_PACKS: { src: string; height: number; pos: [number, number, number] }[] = [
+  { src: '/assets/whey-choc-proforce.webp', height: 2.9, pos: [0, 0, 0] },
+]
+
+function PackShot({ src, height, pos, index }: { src: string; height: number; pos: [number, number, number]; index: number }) {
+  const tex = useLoader(THREE.TextureLoader, src)
+  const shadow = useMemo(() => radialTexture(0, 0.5), [])
   useMemo(() => {
     tex.colorSpace = THREE.SRGBColorSpace
-    tex.anisotropy = 4
+    tex.anisotropy = 8
   }, [tex])
+  const img = tex.image as HTMLImageElement
+  const w = height * (img.width / img.height)
   const ref = useRef<THREE.Group>(null)
   const start = useRef<number | null>(null)
-  useFrame((s) => {
-    const t = s.clock.elapsedTime
+  useFrame((st) => {
+    const t = st.clock.elapsedTime
     if (start.current === null) start.current = t
-    const p = Math.min(1, Math.max(0, (t - start.current - 0.9) / 1.8))
+    const p = Math.min(1, Math.max(0, (t - start.current - 0.4 - index * 0.25) / 1.6))
     const e = 1 - Math.pow(1 - p, 3)
-    if (ref.current) {
-      ref.current.position.z = -2.2 - (1 - e) * 2.2 + Math.sin(t * 0.5) * 0.05
-      ;(ref.current.children[0] as THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>).material.opacity = e
-    }
+    const g = ref.current
+    if (!g) return
+    g.position.y = pos[1] + (1 - e) * -0.6 + Math.sin(t * 0.8 + index) * 0.04
+    g.rotation.z = Math.sin(t * 0.5 + index) * 0.015
+    const m = (g.children[0] as THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>).material
+    m.opacity = e
   })
-  const w = lite ? 3.2 : 3.7
   return (
-    <group ref={ref} position={[lite ? 0.9 : 2.05, w / 1.272 / 2 - 0.05, -1.9]}>
-      <mesh>
-        <planeGeometry args={[w, w / 1.272]} />
-        <meshBasicMaterial map={tex} alphaMap={alpha} transparent toneMapped={false} depthWrite={false} fog={false} />
+    <group position={[pos[0], 0, pos[2]]}>
+      <group ref={ref}>
+        <mesh position={[0, height / 2, 0]} renderOrder={1}>
+          <planeGeometry args={[w, height]} />
+          <meshBasicMaterial map={tex} transparent alphaTest={0.02} toneMapped={false} fog={false} />
+        </mesh>
+      </group>
+      <mesh rotation-x={-Math.PI / 2} position={[0, 0.004, 0.05]}>
+        <planeGeometry args={[w * 1.3, w * 0.5]} />
+        <meshBasicMaterial map={shadow} color="#000000" transparent opacity={0.8} depthWrite={false} />
       </mesh>
     </group>
   )
@@ -108,7 +122,7 @@ function Rig({
     // The pack turns gently but always keeps its printed front and side to the camera.
     const h = hero.current
     if (h) {
-      h.rotation.y = THREE.MathUtils.lerp(h.rotation.y, 0.5 + Math.sin(t * 0.35) * 0.22 + mx * 0.3 - scroll * 0.4, k)
+      h.rotation.y = THREE.MathUtils.lerp(h.rotation.y, Math.sin(t * 0.35) * 0.06 + mx * 0.12, k)
       h.rotation.x = THREE.MathUtils.lerp(h.rotation.x, my * 0.04, k)
       h.position.y = Math.sin(t * 0.8) * 0.04
     }
@@ -153,25 +167,14 @@ function Composition({ lite }: { lite: boolean }) {
       }
       product={
         <Suspense fallback={null}>
-          <MilkCarton lite={lite} />
+          {HERO_PACKS.map((p, i) => (
+            <PackShot key={p.src} index={i} {...p} />
+          ))}
         </Suspense>
       }
     >
-      <Suspense fallback={null}>
-        <JarsPlane lite={lite} />
-      </Suspense>
       <ChocolateField chunks={lite ? CHUNKS_LITE : CHUNKS_DESKTOP} />
       <FloorGlow />
-      <ContactShadows
-        position={[0, 0, 0]}
-        opacity={0.75}
-        scale={8}
-        blur={2.6}
-        far={4}
-        resolution={lite ? 256 : 512}
-        frames={1}
-        color="#000000"
-      />
       <Sparkles count={lite ? 30 : 70} scale={[9, 5, 5]} position={[0, 2, -1]} size={2.2} speed={0.25} opacity={0.5} color="#C7A56A" />
     </Rig>
   )

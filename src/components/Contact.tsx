@@ -12,7 +12,7 @@ const CHANNELS = [
 
 export default function Contact() {
   return (
-    <section id="contato" className="grain relative overflow-hidden bg-navy py-20 md:py-28" aria-labelledby="contato-title">
+    <section id="contato" className="grain relative overflow-hidden bg-navy py-16 md:py-20" aria-labelledby="contato-title">
       <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_80%_20%,rgba(42,79,143,0.8),transparent_70%),radial-gradient(60%_60%_at_0%_100%,rgba(9,9,9,0.9),transparent_70%)]" />
       <img
         src="/assets/art-bebidas.webp"
@@ -26,7 +26,7 @@ export default function Contact() {
         <SplitHeading
             id="contato-title"
           lines={['Grandes negócios', <>começam com uma <span className="serif-accent">conversa.</span></>]}
-          className="display mt-8 max-w-[1000px] text-[clamp(37px,5.46vw,94px)]"
+          className="display mt-8 max-w-[1000px] text-[clamp(33px,4.59vw,79px)]"
         />
         <Reveal delay={0.15}>
           <p className="mt-8 max-w-[520px] text-[16px] leading-relaxed text-white/75">
@@ -34,7 +34,7 @@ export default function Contact() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.45fr_1fr]">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.45fr_1fr]">
           {CHANNELS.map((c, i) => (
             <Reveal key={c.label} delay={i * 0.07} y={30}>
               <a

@@ -21,7 +21,7 @@ function TiltEmblem() {
   return (
     <div
       ref={ref}
-      className="relative mx-auto aspect-square w-full max-w-[420px] [perspective:1200px]"
+      className="relative mx-auto aspect-square w-full max-w-[340px] [perspective:1200px]"
       onPointerMove={(e) => {
         const r = ref.current!.getBoundingClientRect()
         mx.set((e.clientX - r.left) / r.width - 0.5)
@@ -63,7 +63,7 @@ function TiltEmblem() {
 
 export default function About() {
   return (
-    <section id="empresa" className="relative overflow-hidden bg-ink py-20 md:py-28" aria-labelledby="about-title">
+    <section id="empresa" className="relative overflow-hidden bg-ink py-16 md:py-20" aria-labelledby="about-title">
       <div className="absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-navy/40 blur-[120px]" aria-hidden="true" />
       <div className="container-x relative grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="order-2 lg:order-1 lg:col-span-5">
@@ -79,7 +79,7 @@ export default function About() {
               'representar marcas.',
               <span className="serif-accent text-gradient-milk">Construir grandes parcerias.</span>,
             ]}
-            className="display mt-8 text-[clamp(34px,4.06vw,66px)]"
+            className="display mt-6 text-[clamp(31px,3.41vw,55px)]"
           />
           <Reveal delay={0.15}>
             <p className="mt-8 max-w-[560px] text-[16px] leading-relaxed text-white/70">
@@ -107,7 +107,7 @@ export default function About() {
         {VALUES.map((v, i) => (
           <Reveal key={v.t} delay={i * 0.08} y={30} className="group bg-ink p-8 transition-colors duration-700 hover:bg-[#0d1626] md:p-10">
             <v.icon className="h-6 w-6 text-gold transition-transform duration-700 group-hover:-translate-y-1" strokeWidth={1.4} />
-            <h3 className="mt-10 text-2xl font-semibold tracking-tight">{v.t}</h3>
+            <h3 className="mt-8 text-xl font-semibold tracking-tight">{v.t}</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-white/55">{v.d}</p>
           </Reveal>
         ))}
