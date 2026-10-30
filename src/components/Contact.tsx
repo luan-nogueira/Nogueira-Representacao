@@ -30,7 +30,7 @@ export default function Contact() {
         />
         <Reveal delay={0.15}>
           <p className="mt-8 max-w-[520px] text-[16px] leading-relaxed text-white/75">
-            Entre em contato com Angelo Nogueira e conheça as oportunidades de representação comercial.
+            Fale com um representante e conheça as oportunidades de representação comercial.
           </p>
         </Reveal>
 

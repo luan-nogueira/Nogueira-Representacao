@@ -6,7 +6,7 @@ import { hasWebGL } from './Hero'
 import { Eyebrow, Reveal, SplitHeading } from './ui'
 import { waLink } from '../lib/contact'
 
-const WA_WHEY = waLink('Olá, Angelo! Vi o Whey Protein Piracanjuba no site e quero saber mais para o meu estabelecimento.')
+const WA_WHEY = waLink('Olá! Vi o Whey Protein Piracanjuba no site e quero saber mais para o meu estabelecimento.')
 
 const WheyScene = lazy(() => import('../three/WheyScene'))
 

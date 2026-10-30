@@ -15,6 +15,6 @@ export const waLink = (text?: string) =>
   text ? `${CONTACT.whatsapp}?text=${encodeURIComponent(text)}` : CONTACT.whatsapp
 
 export const WA_PARTNERSHIP = waLink(
-  'Olá, Angelo! Conheci a Nogueira Representações pelo site e quero conversar sobre uma parceria.'
+  'Olá! Conheci a Nogueira Representações pelo site e quero conversar sobre uma parceria.'
 )
-export const WA_HELLO = waLink('Olá, Angelo! Vim pelo site da Nogueira Representações.')
+export const WA_HELLO = waLink('Olá! Vim pelo site da Nogueira Representações.')

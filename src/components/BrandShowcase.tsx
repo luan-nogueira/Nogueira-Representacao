@@ -185,7 +185,7 @@ export default function BrandShowcase({ brand }: { brand: Brand }) {
         <div className="mt-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <p className={`text-[12px] ${th.muted}`}>Imagens e informações do catálogo oficial {brand.name}.</p>
           <a
-            href={waLink(`Olá, Angelo! Vi os produtos ${brand.name} no site e quero saber mais para o meu estabelecimento.`)}
+            href={waLink(`Olá! Vi os produtos ${brand.name} no site e quero saber mais para o meu estabelecimento.`)}
             target="_blank"
             rel="noopener noreferrer"
             className={`btn ${th.button}`}

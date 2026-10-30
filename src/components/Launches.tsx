@@ -65,7 +65,7 @@ export default function Launches() {
             />
           </div>
           <p className="max-w-[420px] text-[15px] leading-relaxed text-white/60">
-            Os produtos que acabaram de chegar ao portfólio. Fale com Angelo Nogueira para levar à sua loja.
+            Os produtos que acabaram de chegar ao portfólio. Fale com um representante para levar à sua loja.
           </p>
         </div>
 
@@ -157,7 +157,7 @@ export default function Launches() {
 
         <div className="mt-6 flex justify-start">
           <a
-            href={waLink('Olá, Angelo! Quero saber mais sobre os lançamentos.')}
+            href={waLink('Olá! Quero saber mais sobre os lançamentos.')}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"

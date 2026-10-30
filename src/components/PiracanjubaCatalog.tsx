@@ -38,7 +38,7 @@ export default function PiracanjubaCatalog() {
           </div>
           <Reveal delay={0.1}>
             <p className="max-w-[420px] text-[15px] leading-relaxed text-white/60">
-              Linhas do catálogo oficial Piracanjuba. Consulte com Angelo Nogueira a disponibilidade para o seu
+              Linhas do catálogo oficial Piracanjuba. Consulte um representante sobre a disponibilidade para o seu
               estabelecimento.
             </p>
           </Reveal>
@@ -126,7 +126,7 @@ export default function PiracanjubaCatalog() {
           informa: o aleitamento materno evita infecções e alergias e é recomendado até os 2 (dois) anos de idade ou mais.
         </p>
         <a
-          href={waLink('Olá, Angelo! Quero conhecer o portfólio Piracanjuba para a minha loja.')}
+          href={waLink('Olá! Quero conhecer o portfólio Piracanjuba para a minha loja.')}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary shrink-0"

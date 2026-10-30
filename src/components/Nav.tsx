@@ -83,7 +83,7 @@ export default function Nav() {
               rel="noopener noreferrer"
               className="hidden items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-[13px] transition-colors hover:border-gold hover:text-gold sm:inline-flex"
             >
-              <WhatsAppIcon className="h-4 w-4" /> Falar com Angelo
+              <WhatsAppIcon className="h-4 w-4" /> Falar com representante
             </a>
             <button
               onClick={() => setOpen(true)}
@@ -134,7 +134,7 @@ export default function Nav() {
             </ul>
             <div className="container-x pb-10">
               <a href={WA_HELLO} target="_blank" rel="noopener noreferrer" className="btn btn-primary w-full">
-                <WhatsAppIcon /> Fale com Angelo Nogueira
+                <WhatsAppIcon /> Fale com um representante
               </a>
             </div>
           </motion.div>

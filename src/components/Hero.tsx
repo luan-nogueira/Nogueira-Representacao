@@ -134,7 +134,7 @@ export default function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
             </Magnetic>
             <Magnetic href={WA_HELLO} target="_blank" rel="noopener noreferrer" className="btn btn-ghost pointer-events-auto">
-              <WhatsAppIcon className="h-4 w-4" /> Fale com Angelo Nogueira
+              <WhatsAppIcon className="h-4 w-4" /> Fale com um representante
             </Magnetic>
           </motion.div>
         </div>
