@@ -1,0 +1,52 @@
+import { useEffect } from 'react'
+import { MotionConfig } from 'framer-motion'
+import { initSmoothScroll, ScrollTrigger } from './lib/smoothScroll'
+import Preloader from './components/Preloader'
+import Nav from './components/Nav'
+import Hero from './components/Hero'
+import Marquee from './components/Marquee'
+import Piracanjuba from './components/Piracanjuba'
+import Products from './components/Products'
+import Whey from './components/Whey'
+import About from './components/About'
+import Partnership from './components/Partnership'
+import Region from './components/Region'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
+
+export default function App() {
+  useEffect(() => {
+    const lenis = initSmoothScroll()
+    const refresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refresh)
+    document.fonts?.ready.then(refresh)
+    return () => {
+      window.removeEventListener('load', refresh)
+      lenis?.destroy()
+    }
+  }, [])
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-ink">
+        Pular para o conteúdo
+      </a>
+      <Preloader />
+      <Nav />
+      <main id="conteudo">
+        <Hero />
+        <Marquee />
+        <Piracanjuba />
+        <Products />
+        <Whey />
+        <About />
+        <Partnership />
+        <Region />
+        <Contact />
+      </main>
+      <Footer />
+      <FloatingWhatsApp />
+    </MotionConfig>
+  )
+}
