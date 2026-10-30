@@ -12,7 +12,7 @@ const CHANNELS = [
 
 export default function Contact() {
   return (
-    <section id="contato" className="grain relative overflow-hidden bg-navy py-28 md:py-40" aria-labelledby="contato-title">
+    <section id="contato" className="grain relative overflow-hidden bg-navy py-20 md:py-28" aria-labelledby="contato-title">
       <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_80%_20%,rgba(42,79,143,0.8),transparent_70%),radial-gradient(60%_60%_at_0%_100%,rgba(9,9,9,0.9),transparent_70%)]" />
       <img
         src="/assets/art-bebidas.webp"
@@ -26,21 +26,21 @@ export default function Contact() {
         <SplitHeading
             id="contato-title"
           lines={['Grandes negócios', <>começam com uma <span className="serif-accent">conversa.</span></>]}
-          className="display mt-8 max-w-[1000px] text-[clamp(44px,7vw,120px)]"
+          className="display mt-8 max-w-[1000px] text-[clamp(37px,5.46vw,94px)]"
         />
         <Reveal delay={0.15}>
-          <p className="mt-8 max-w-[520px] text-[18px] leading-relaxed text-white/75">
+          <p className="mt-8 max-w-[520px] text-[16px] leading-relaxed text-white/75">
             Entre em contato com Angelo Nogueira e conheça as oportunidades de representação comercial.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.45fr_1fr]">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.45fr_1fr]">
           {CHANNELS.map((c, i) => (
             <Reveal key={c.label} delay={i * 0.07} y={30}>
               <a
                 href={c.href}
                 {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className={`group relative flex h-full min-h-[150px] sm:min-h-[200px] flex-col justify-between overflow-hidden rounded-[28px] border p-7 transition-colors duration-500 ${
+                className={`group relative flex h-full min-h-[130px] sm:min-h-[170px] flex-col justify-between overflow-hidden rounded-[28px] border p-7 transition-colors duration-500 ${
                   c.primary ? 'border-white bg-white text-ink' : 'border-white/20 bg-white/[0.04] text-white backdrop-blur-md'
                 }`}
                 aria-label={`${c.label}: ${c.value}`}
@@ -64,7 +64,7 @@ export default function Contact() {
         </div>
 
         <Reveal>
-          <dl className="mt-16 grid gap-6 border-t border-white/15 pt-10 text-[15px] sm:grid-cols-3">
+          <dl className="mt-12 grid gap-6 border-t border-white/15 pt-10 text-[15px] sm:grid-cols-3">
             <div>
               <dt className="text-[11px] uppercase tracking-mega text-white/50">Responsável</dt>
               <dd className="mt-2 font-semibold">{CONTACT.name}</dd>

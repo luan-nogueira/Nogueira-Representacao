@@ -2,7 +2,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { ContactShadows, Sparkles } from '@react-three/drei'
-import { ChocolateField, Droplets, MilkBottle, MilkRibbon, Studio, type ChunkSpec } from './Elements'
+import { ChocolateField, Droplets, MilkCarton, MilkRibbon, Studio, type ChunkSpec } from './Elements'
 import { featherTexture, radialTexture } from './geometries'
 
 const CHUNKS_DESKTOP: ChunkSpec[] = [
@@ -69,13 +69,16 @@ function Rig({
   lite,
   children,
   spin,
+  product,
 }: {
   lite: boolean
   children: React.ReactNode
   spin: React.ReactNode
+  product: React.ReactNode
 }) {
   const group = useRef<THREE.Group>(null)
   const spinner = useRef<THREE.Group>(null)
+  const hero = useRef<THREE.Group>(null)
   const { camera, size } = useThree()
   const mouse = useRef({ x: 0, y: 0 })
   const narrow = size.width < 768
@@ -102,13 +105,20 @@ function Rig({
       sp.rotation.y = THREE.MathUtils.lerp(sp.rotation.y, mx * 0.5 + t * 0.12 + scroll * 1.6, k)
       sp.rotation.x = THREE.MathUtils.lerp(sp.rotation.x, my * 0.05, k)
     }
+    // The pack turns gently but always keeps its printed front and side to the camera.
+    const h = hero.current
+    if (h) {
+      h.rotation.y = THREE.MathUtils.lerp(h.rotation.y, 0.5 + Math.sin(t * 0.35) * 0.22 + mx * 0.3 - scroll * 0.4, k)
+      h.rotation.x = THREE.MathUtils.lerp(h.rotation.x, my * 0.04, k)
+      h.position.y = Math.sin(t * 0.8) * 0.04
+    }
     g.rotation.y = THREE.MathUtils.lerp(g.rotation.y, mx * 0.08, k)
     const baseX = narrow ? 0 : Math.min(2.3, size.width / 640)
     g.position.x = THREE.MathUtils.lerp(g.position.x, baseX - scroll * 0.6, k)
     g.position.y = THREE.MathUtils.lerp(g.position.y, (narrow ? 0 : -0.1) + scroll * 1.1, k)
     camera.position.x = THREE.MathUtils.lerp(camera.position.x, mx * 0.35, k)
     camera.position.y = THREE.MathUtils.lerp(camera.position.y, (narrow ? -0.75 : 1.7) - my * 0.2, k)
-    camera.position.z = THREE.MathUtils.lerp(camera.position.z, (narrow ? 20 : 11.4) - scroll * 1.8, k)
+    camera.position.z = THREE.MathUtils.lerp(camera.position.z, (narrow ? 21 : 12.8) - scroll * 1.8, k)
     camera.lookAt(narrow ? 0 : 0.2, narrow ? -0.9 : 1.75, 0)
     const fog = state.scene.fog as THREE.Fog | null
     if (fog) {
@@ -122,6 +132,9 @@ function Rig({
       <group ref={spinner} position={[narrow ? 0 : -0.7, 0, 0]}>
         {spin}
       </group>
+      <group position={[narrow ? 0 : -0.7, 0, 0]}>
+        <group ref={hero}>{product}</group>
+      </group>
       {children}
     </group>
   )
@@ -133,11 +146,15 @@ function Composition({ lite }: { lite: boolean }) {
       lite={lite}
       spin={
         <>
-          <MilkBottle lite={lite} />
           <MilkRibbon lite={lite} phase={0.4} radius={0.15} turns={1.15} />
           <MilkRibbon lite={lite} phase={3.4} turns={0.9} base={1.2} radius={0.085} height={2.3} delay={0.5} />
           <Droplets count={lite ? 22 : 48} spread={2.1} size={0.05} />
         </>
+      }
+      product={
+        <Suspense fallback={null}>
+          <MilkCarton lite={lite} />
+        </Suspense>
       }
     >
       <Suspense fallback={null}>

@@ -59,7 +59,7 @@ function ProductCard({ c }: { c: Card }) {
   return (
     <article
       data-card
-      className={`group relative flex h-[min(78vh,680px)] w-[82vw] shrink-0 snap-center flex-col overflow-hidden rounded-[28px] border border-white/10 sm:w-[440px] lg:w-[min(36vw,520px)] ${
+      className={`group relative flex h-[min(70vh,580px)] w-[82vw] shrink-0 snap-center flex-col overflow-hidden rounded-[28px] border border-white/10 sm:w-[440px] lg:w-[min(30vw,440px)] ${
         light ? 'text-ink' : 'text-white'
       }`}
       style={{ background: c.bg }}
@@ -94,7 +94,7 @@ function ProductCard({ c }: { c: Card }) {
       </div>
 
       <div className="relative shrink-0 p-7 pt-2 md:p-9 md:pt-2">
-        <h3 className="display text-[clamp(34px,3.4vw,52px)]">{c.title}</h3>
+        <h3 className="display text-[clamp(29px,2.65vw,41px)]">{c.title}</h3>
         <p className={`mt-3 max-w-[340px] text-[15px] leading-relaxed ${light ? 'text-ink/70' : 'text-white/65'}`}>{c.text}</p>
         {c.href && (
           <button
@@ -162,12 +162,12 @@ export default function Products() {
           ref={track}
           className="flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-5 pb-6 [scrollbar-width:none] sm:px-8 lg:snap-none lg:gap-8 lg:overflow-visible lg:px-12 lg:pb-0 [&::-webkit-scrollbar]:hidden"
         >
-          <div className="w-[86vw] shrink-0 snap-start pr-4 sm:w-[480px] lg:w-[min(40vw,560px)] lg:pr-10">
+          <div className="w-[86vw] shrink-0 snap-start pr-4 sm:w-[480px] lg:w-[min(36vw,480px)] lg:pr-10">
             <Eyebrow>Universo de produtos</Eyebrow>
             <SplitHeading
             id="prod-title"
               lines={['Um portfólio', 'que move', <span className="serif-accent text-gradient-milk">prateleiras.</span>]}
-              className="display mt-8 text-[clamp(44px,5.6vw,88px)]"
+              className="display mt-8 text-[clamp(37px,4.37vw,69px)]"
             />
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-[420px] text-[16px] leading-relaxed text-white/60">
@@ -183,10 +183,10 @@ export default function Products() {
             <ProductCard key={c.n} c={c} />
           ))}
 
-          <div className="flex h-[min(78vh,680px)] w-[82vw] shrink-0 snap-center flex-col justify-between rounded-[28px] border border-gold/30 p-9 sm:w-[400px] lg:w-[min(30vw,440px)]">
+          <div className="flex h-[min(70vh,580px)] w-[82vw] shrink-0 snap-center flex-col justify-between rounded-[28px] border border-gold/30 p-9 sm:w-[400px] lg:w-[min(26vw,380px)]">
             <span className="text-xs uppercase tracking-mega text-gold">Portfólio completo</span>
             <div>
-              <p className="display text-[clamp(32px,3vw,46px)]">
+              <p className="display text-[clamp(27px,2.34vw,36px)]">
                 Quer conhecer <span className="serif-accent">todo</span> o portfólio?
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-white/60">

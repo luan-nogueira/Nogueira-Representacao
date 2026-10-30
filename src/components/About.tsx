@@ -21,7 +21,7 @@ function TiltEmblem() {
   return (
     <div
       ref={ref}
-      className="relative mx-auto aspect-square w-full max-w-[520px] [perspective:1200px]"
+      className="relative mx-auto aspect-square w-full max-w-[420px] [perspective:1200px]"
       onPointerMove={(e) => {
         const r = ref.current!.getBoundingClientRect()
         mx.set((e.clientX - r.left) / r.width - 0.5)
@@ -63,7 +63,7 @@ function TiltEmblem() {
 
 export default function About() {
   return (
-    <section id="empresa" className="relative overflow-hidden bg-ink py-28 md:py-40" aria-labelledby="about-title">
+    <section id="empresa" className="relative overflow-hidden bg-ink py-20 md:py-28" aria-labelledby="about-title">
       <div className="absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-navy/40 blur-[120px]" aria-hidden="true" />
       <div className="container-x relative grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="order-2 lg:order-1 lg:col-span-5">
@@ -79,10 +79,10 @@ export default function About() {
               'representar marcas.',
               <span className="serif-accent text-gradient-milk">Construir grandes parcerias.</span>,
             ]}
-            className="display mt-8 text-[clamp(40px,5.2vw,84px)]"
+            className="display mt-8 text-[clamp(34px,4.06vw,66px)]"
           />
           <Reveal delay={0.15}>
-            <p className="mt-10 max-w-[560px] text-[18px] leading-relaxed text-white/70">
+            <p className="mt-8 max-w-[560px] text-[16px] leading-relaxed text-white/70">
               A Nogueira Representações atua conectando grandes marcas ao mercado regional, desenvolvendo
               relacionamentos comerciais sólidos e aproximando produtos de qualidade dos estabelecimentos e
               consumidores.

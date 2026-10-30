@@ -15,14 +15,14 @@ export default function Region() {
   for (let y = 20; y < 560; y += 16) for (let x = 20; x < 800; x += 16) dots.push([x + ((y / 16) % 2) * 8, y])
 
   return (
-    <section id="regiao" className="relative overflow-hidden bg-ink py-28 md:py-40" aria-labelledby="regiao-title">
+    <section id="regiao" className="relative overflow-hidden bg-ink py-20 md:py-28" aria-labelledby="regiao-title">
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Eyebrow>Região de atuação</Eyebrow>
           <SplitHeading
             id="regiao-title"
             lines={['Presença regional.', <span className="serif-accent text-gradient-milk">Conexões que geram oportunidades.</span>]}
-            className="display mt-8 text-[clamp(38px,4.6vw,72px)]"
+            className="display mt-8 text-[clamp(32px,3.59vw,56px)]"
           />
           <Reveal delay={0.15}>
             <p className="mt-8 max-w-[440px] text-[16px] leading-relaxed text-white/60">

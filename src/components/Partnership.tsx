@@ -23,7 +23,7 @@ function SpotCard({ item, i }: { item: (typeof ITEMS)[number]; i: number }) {
           ref.current!.style.setProperty('--x', `${e.clientX - r.left}px`)
           ref.current!.style.setProperty('--y', `${e.clientY - r.top}px`)
         }}
-        className="group relative h-full min-h-[240px] overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.02] p-8 transition-colors duration-500 hover:border-gold/40 md:p-10"
+        className="group relative h-full min-h-[200px] overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.02] p-7 transition-colors duration-500 hover:border-gold/40 md:p-8"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -37,7 +37,7 @@ function SpotCard({ item, i }: { item: (typeof ITEMS)[number]; i: number }) {
             <span className="text-xs tabular-nums text-white/30">0{i + 1}</span>
           </div>
           <div>
-            <h3 className="text-[clamp(24px,2.2vw,32px)] font-semibold leading-tight tracking-tight">{item.t}</h3>
+            <h3 className="text-[clamp(20px,1.72vw,25px)] font-semibold leading-tight tracking-tight">{item.t}</h3>
             <p className="mt-3 max-w-[420px] text-[15px] leading-relaxed text-white/55">{item.d}</p>
           </div>
         </div>
@@ -48,7 +48,7 @@ function SpotCard({ item, i }: { item: (typeof ITEMS)[number]; i: number }) {
 
 export default function Partnership() {
   return (
-    <section id="representacao" className="relative overflow-hidden bg-[#0b0d12] py-28 md:py-40" aria-labelledby="rep-title">
+    <section id="representacao" className="relative overflow-hidden bg-[#0b0d12] py-20 md:py-28" aria-labelledby="rep-title">
       <div className="absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/3 rounded-full bg-navy/50 blur-[140px]" aria-hidden="true" />
       <div className="container-x relative">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
@@ -57,7 +57,7 @@ export default function Partnership() {
             <SplitHeading
             id="rep-title"
               lines={['Sua empresa pode', 'estar mais perto das', <span className="serif-accent text-gradient-milk">grandes marcas.</span>]}
-              className="display mt-8 text-[clamp(38px,5vw,80px)]"
+              className="display mt-8 text-[clamp(32px,3.9vw,62px)]"
             />
           </div>
           <Reveal className="lg:col-span-4" delay={0.1}>
@@ -68,14 +68,14 @@ export default function Partnership() {
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
           {ITEMS.map((it, i) => (
             <SpotCard key={it.t} item={it} i={i} />
           ))}
         </div>
 
-        <Reveal className="mt-16 flex flex-col items-start justify-between gap-8 rounded-[32px] border border-gold/30 bg-gradient-to-r from-navy/60 to-transparent p-8 md:flex-row md:items-center md:p-12">
-          <p className="display max-w-[620px] text-[clamp(28px,3vw,44px)]">
+        <Reveal className="mt-12 flex flex-col items-start justify-between gap-8 rounded-[32px] border border-gold/30 bg-gradient-to-r from-navy/60 to-transparent p-7 md:flex-row md:items-center md:p-10">
+          <p className="display max-w-[620px] text-[clamp(24px,2.34vw,34px)]">
             Vamos conversar sobre o <span className="serif-accent">seu negócio?</span>
           </p>
           <Magnetic href={WA_PARTNERSHIP} target="_blank" rel="noopener noreferrer" className="btn btn-primary group shrink-0">

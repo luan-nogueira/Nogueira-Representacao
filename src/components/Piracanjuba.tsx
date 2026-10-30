@@ -49,17 +49,17 @@ export default function Piracanjuba() {
         />
       </svg>
 
-      <div className="container-x relative pb-24 pt-32 md:pb-36 md:pt-48">
+      <div className="container-x relative pb-20 pt-28 md:pb-28 md:pt-36">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
             <Eyebrow className="!text-ink/60">A marca representada</Eyebrow>
             <SplitHeading
             id="pira-title"
               lines={['Qualidade que', 'conquista', <span className="serif-accent text-navy">o Brasil.</span>]}
-              className="display mt-8 text-[clamp(48px,7.4vw,124px)]"
+              className="display mt-8 text-[clamp(41px,5.77vw,97px)]"
             />
             <Reveal delay={0.2}>
-              <p className="mt-10 max-w-[480px] text-[17px] leading-relaxed text-ink/70">
+              <p className="mt-8 max-w-[480px] text-[16px] leading-relaxed text-ink/70">
                 A Piracanjuba é a principal marca representada pela Nogueira Representações. Uma marca que
                 carrega qualidade, tradição e confiança, e que merece uma presença à altura no mercado regional.
               </p>
@@ -67,7 +67,7 @@ export default function Piracanjuba() {
           </div>
 
           <div className="relative lg:col-span-6">
-            <div data-logo className="relative mx-auto aspect-[4/5] w-full max-w-[520px]">
+            <div data-logo className="relative mx-auto aspect-[4/5] w-full max-w-[420px]">
               <div className="absolute inset-0 rounded-[36px] bg-white shadow-[0_60px_120px_-40px_rgba(16,43,89,0.45)]" />
               <div className="absolute inset-0 overflow-hidden rounded-[36px]">
                 <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-navy/[0.06]" />
@@ -93,13 +93,13 @@ export default function Piracanjuba() {
           </div>
         </div>
 
-        <ol className="mt-24 md:mt-32">
+        <ol className="mt-16 md:mt-20">
           {PILLARS.map((p, i) => (
             <li key={p.t} className="relative">
               <span data-pillar-line className="absolute inset-x-0 top-0 h-px origin-left bg-ink/15" />
-              <Reveal className="grid items-baseline gap-3 py-8 md:grid-cols-12 md:gap-8 md:py-10" y={24}>
+              <Reveal className="grid items-baseline gap-3 py-6 md:grid-cols-12 md:gap-8 md:py-7" y={24}>
                 <span className="text-xs tabular-nums text-ink/40 md:col-span-1">0{i + 1}</span>
-                <h3 className="display text-[clamp(34px,4.6vw,72px)] md:col-span-6">{p.t}</h3>
+                <h3 className="display text-[clamp(29px,3.59vw,56px)] md:col-span-6">{p.t}</h3>
                 <p className="max-w-[420px] text-[15px] leading-relaxed text-ink/60 md:col-span-5">{p.d}</p>
               </Reveal>
             </li>

@@ -44,7 +44,7 @@ export default function Nav() {
           scrolled ? 'bg-ink/70 backdrop-blur-xl border-b border-white/[0.06]' : 'bg-transparent'
         }`}
       >
-        <nav className="container-x flex h-[72px] items-center justify-between lg:h-[84px]" aria-label="Principal">
+        <nav className="container-x flex h-[68px] items-center justify-between lg:h-[76px]" aria-label="Principal">
           <a
             href="#topo"
             onClick={(e) => {
@@ -54,7 +54,7 @@ export default function Nav() {
             className="flex items-center gap-3"
             aria-label="Nogueira Representações — início"
           >
-            <img src="/assets/nr-white.webp" alt="Nogueira Representações" width={400} height={484} className="h-11 w-auto lg:h-12" />
+            <img src="/assets/nr-white.webp" alt="Nogueira Representações" width={400} height={484} className="h-10 w-auto lg:h-11" />
           </a>
 
           <ul className="hidden items-center gap-9 lg:flex">

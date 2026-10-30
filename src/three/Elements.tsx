@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { Environment, Lightformer } from '@react-three/drei'
 import {
   bottleGeometry,
@@ -312,5 +312,60 @@ export function Droplets({
     <instancedMesh ref={ref} args={[undefined, undefined, count]} material={mat}>
       <sphereGeometry args={[1, 18, 14]} />
     </instancedMesh>
+  )
+}
+
+/* ------------------------------------------------------------------- carton */
+
+/**
+ * Leite Piracanjuba 1L. The printed faces come straight from the official
+ * product photo (perspective-corrected); only the box form is modelled.
+ */
+export function MilkCarton({ lite = false }: { lite?: boolean }) {
+  const [front, side] = useLoader(THREE.TextureLoader, ['/assets/carton-front.webp', '/assets/carton-side.webp'])
+  const mats = useMemo(() => {
+    for (const t of [front, side]) {
+      t.colorSpace = THREE.SRGBColorSpace
+      t.anisotropy = 8
+    }
+    const print = (map?: THREE.Texture, color = '#ffffff') =>
+      new THREE.MeshPhysicalMaterial({
+        map: map ?? null,
+        color,
+        roughness: 0.42,
+        clearcoat: lite ? 0 : 0.45,
+        clearcoatRoughness: 0.3,
+      })
+    const plain = print(undefined, '#f3f1ee')
+    const red = print(undefined, '#d81f26')
+    // BoxGeometry face order: +x, -x, +y, -y, +z, -z
+    return [plain, print(side), red, plain, print(front), plain]
+  }, [front, side, lite])
+
+  const W = 1.12
+  const D = 0.74
+  const H = 2.62
+  return (
+    <group>
+      <mesh material={mats} position={[0, H / 2, 0]} castShadow>
+        <boxGeometry args={[W, H, D]} />
+      </mesh>
+      {/* sealed top flap */}
+      <mesh position={[0, H + 0.03, -D / 2 + 0.02]}>
+        <boxGeometry args={[W * 0.98, 0.06, 0.04]} />
+        <meshPhysicalMaterial color="#d81f26" roughness={0.45} clearcoat={0.4} />
+      </mesh>
+      {/* screw cap */}
+      <group position={[W * 0.18, H, D * 0.12]}>
+        <mesh position={[0, 0.03, 0]}>
+          <cylinderGeometry args={[0.2, 0.2, 0.05, lite ? 24 : 48]} />
+          <meshPhysicalMaterial color="#d81f26" roughness={0.4} clearcoat={0.5} />
+        </mesh>
+        <mesh position={[0, 0.13, 0]}>
+          <cylinderGeometry args={[0.16, 0.165, 0.17, lite ? 24 : 48]} />
+          <meshPhysicalMaterial color="#fbfbfb" roughness={0.35} clearcoat={0.6} />
+        </mesh>
+      </group>
+    </group>
   )
 }

@@ -57,7 +57,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-ink to-transparent" />
       <div
         className="pointer-events-none absolute -z-10 select-none whitespace-nowrap font-semibold leading-none tracking-[-0.06em] text-outline opacity-40 max-md:hidden"
-        style={{ fontSize: '19vw', bottom: '-3.2vw', left: '-1vw' }}
+        style={{ fontSize: '16vw', bottom: '-3.2vw', left: '-1vw' }}
         aria-hidden="true"
       >
         NOGUEIRA
@@ -93,7 +93,7 @@ export default function Hero() {
                 Nogueira Representações
               </motion.span>
             </span>
-            <span className="display block text-[clamp(42px,5.5vw,92px)]">
+            <span className="display block text-[clamp(36px,4.29vw,72px)]">
               {['Grandes marcas', 'merecem grandes', 'representações.'].map((t, i) => (
                 <span key={t} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                   <motion.span className="block" {...line(0.08 + i * 0.09)}>
@@ -105,7 +105,7 @@ export default function Hero() {
           </h1>
 
           <motion.p
-            className="mt-6 max-w-[460px] text-[15px] leading-relaxed text-white/65 md:mt-8 md:text-[17px]"
+            className="mt-6 max-w-[460px] text-[15px] leading-relaxed text-white/65 md:mt-7 md:text-[16px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 2.0, ease }}
@@ -114,7 +114,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-10"
+            className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-9"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 2.15, ease }}

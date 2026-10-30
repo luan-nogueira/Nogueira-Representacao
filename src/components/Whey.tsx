@@ -3,15 +3,18 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { gsap } from '../lib/smoothScroll'
 import { isLowPower } from '../lib/useDevice'
 import { hasWebGL } from './Hero'
-import { Eyebrow, SplitHeading } from './ui'
+import { Eyebrow, Reveal, SplitHeading } from './ui'
+import { waLink } from '../lib/contact'
+
+const WA_WHEY = waLink('Olá, Angelo! Vi o Whey Protein Piracanjuba no site e quero saber mais para o meu estabelecimento.')
 
 const WheyScene = lazy(() => import('../three/WheyScene'))
 
 type Flavor = 'all' | 'choc' | 'milk'
 
-const FLAVORS: { id: Flavor; label: string; img: string; alt: string }[] = [
+const FLAVORS: { id: Flavor; label: string; img: string; alt: string; cutout?: boolean }[] = [
   { id: 'all', label: 'Linha completa', img: '/assets/jars.webp', alt: 'Whey Protein Piracanjuba, sabores Chocolate e Milk, 450g' },
-  { id: 'choc', label: 'Chocolate', img: '/assets/jar-choc.webp', alt: 'Whey Protein Piracanjuba sabor Chocolate, 450g' },
+  { id: 'choc', label: 'Chocolate', img: '/assets/whey-choc-proforce.webp', alt: 'Whey Protein Piracanjuba Pro Force sabor Chocolate, 450g', cutout: true },
   { id: 'milk', label: 'Milk', img: '/assets/jar-milk.webp', alt: 'Whey Protein Piracanjuba sabor Milk, 450g' },
 ]
 
@@ -87,12 +90,12 @@ export default function Whey() {
   }, [])
 
   return (
-    <section ref={root} id="whey" className="grain relative overflow-hidden bg-ink py-24 md:py-32" aria-labelledby="whey-title">
+    <section ref={root} id="whey" className="grain relative overflow-hidden bg-ink py-20 md:py-24" aria-labelledby="whey-title">
       <motion.div className="absolute inset-0" animate={{ background: BG[flavor] }} transition={{ duration: 1.2 }} />
       <div
         data-whey-word
         className="pointer-events-none absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-semibold leading-none tracking-[-0.06em] text-outline"
-        style={{ fontSize: 'clamp(120px, 24vw, 380px)' }}
+        style={{ fontSize: 'clamp(100px, 19vw, 300px)' }}
         aria-hidden="true"
       >
         WHEY PROTEIN
@@ -108,7 +111,7 @@ export default function Whey() {
                 Whey Protein <span className="serif-accent text-gradient-milk">Piracanjuba.</span>
               </>,
             ]}
-            className="display mt-6 text-[clamp(40px,6vw,96px)]"
+            className="display mt-6 text-[clamp(34px,4.68vw,75px)]"
           />
           <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-white/60">
             A linha Piracanjuba ganhou um novo integrante: Whey Protein, suplemento alimentar em pó na embalagem de
@@ -135,22 +138,8 @@ export default function Whey() {
           </div>
         </div>
 
-        <div ref={stage} className="relative mx-auto mt-10 flex h-[min(62vh,560px)] max-w-[760px] items-center justify-center md:mt-14">
+        <div ref={stage} className="relative mx-auto mt-10 flex h-[min(52vh,460px)] max-w-[760px] items-center justify-center md:mt-14">
           <div className="absolute bottom-[4%] left-1/2 h-10 w-[60%] -translate-x-1/2 rounded-[50%] bg-black/70 blur-2xl" aria-hidden="true" />
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={current.id}
-              src={current.img}
-              alt={current.alt}
-              loading="lazy"
-              decoding="async"
-              className="relative max-h-full w-auto max-w-full object-contain [mask-image:radial-gradient(closest-side,black_80%,transparent)]"
-              initial={{ opacity: 0, scale: 0.94, y: 20, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, scale: 1.04, y: -10, filter: 'blur(10px)' }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </AnimatePresence>
           {webgl && near && (
             <div className="pointer-events-none absolute -inset-y-[18%] left-1/2 w-[100vw] max-w-[1600px] -translate-x-1/2">
               <Suspense fallback={null}>
@@ -158,14 +147,31 @@ export default function Whey() {
               </Suspense>
             </div>
           )}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.img
+              key={current.id}
+              src={current.img}
+              alt={current.alt}
+              decoding="async"
+              className={`relative z-10 max-h-full w-auto max-w-full object-contain ${
+                current.cutout
+                  ? 'drop-shadow-[0_40px_50px_rgba(0,0,0,0.6)]'
+                  : '[mask-image:radial-gradient(closest-side,black_80%,transparent)]'
+              }`}
+              initial={{ opacity: 0, scale: 0.94, y: 20, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, scale: 1.04, y: -10, filter: 'blur(10px)' }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </AnimatePresence>
         </div>
 
-        <dl className="relative mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:mt-16 lg:grid-cols-4">
+        <dl className="relative mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:mt-16 lg:grid-cols-4">
           {STATS.map((s) => (
-            <div key={s.label} className="bg-ink/90 p-6 backdrop-blur md:p-9">
+            <div key={s.label} className="bg-ink/90 p-5 backdrop-blur md:p-7">
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="display block text-[clamp(44px,5vw,76px)]">
+                <span className="display block text-[clamp(37px,3.9vw,59px)]">
                   <Counter to={s.v} decimals={s.v % 1 ? 1 : 0} />
                   <span className="serif-accent text-gold">{s.unit}</span>
                 </span>
@@ -177,6 +183,41 @@ export default function Whey() {
         <p className="relative mt-6 text-center text-[12px] text-white/40">
           Informações conforme material oficial da linha Whey Protein Piracanjuba.
         </p>
+
+        {/* campaign */}
+        <Reveal className="relative mt-16 md:mt-20" y={50}>
+          <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-[#141414]">
+            <div className="relative aspect-[4/3] md:absolute md:inset-y-0 md:right-0 md:aspect-auto md:w-[62%]">
+              <img
+                src="/assets/whey-lifestyle.webp"
+                alt="Whey Protein Piracanjuba sabor Milk ao lado de uma coqueteleira Piracanjuba"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-[70%_center] transition-transform duration-[1.6s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent md:bg-gradient-to-r md:from-[#141414] md:via-[#141414]/30" />
+            </div>
+            <div className="relative flex flex-col justify-center gap-6 p-7 md:min-h-[480px] md:w-[50%] md:p-12">
+              <Eyebrow>Campanha oficial</Eyebrow>
+              <h3 className="display text-[clamp(34px,4.2vw,64px)]">
+                O sabor que
+                <br />
+                <span className="serif-accent text-gradient-milk">te impulsiona.</span>
+              </h3>
+              <p className="max-w-[380px] text-[15px] leading-relaxed text-white/60">
+                Whey Protein Piracanjuba: 21g de proteína por porção, nos sabores Chocolate e Milk.
+              </p>
+              <a
+                href={WA_WHEY}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary self-start"
+              >
+                Quero o Whey Piracanjuba na minha loja
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </div>
 
     </section>
