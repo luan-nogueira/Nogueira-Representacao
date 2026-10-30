@@ -7,6 +7,7 @@ import { WhatsAppIcon } from './Icons'
 
 const LINKS = [
   { id: 'marcas', label: 'Marcas' },
+  { id: 'novidades', label: 'Novidades' },
   { id: 'piracanjuba', label: 'Piracanjuba' },
   { id: 'tangara', label: 'Tangará' },
   { id: 'petyan', label: 'Petyan' },

@@ -20,6 +20,7 @@ export default function Footer() {
             <ul className="mt-6 space-y-3 text-[15px] text-white/70">
               {[
                 ['marcas', 'Marcas'],
+                ['novidades', 'Lançamentos'],
                 ['piracanjuba', 'Piracanjuba'],
                 ['whey', 'Whey Protein'],
                 ['tangara', 'Tangará Química'],

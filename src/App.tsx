@@ -13,6 +13,7 @@ import Region from './components/Region'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Brands from './components/Brands'
+import Launches from './components/Launches'
 import BrandShowcase from './components/BrandShowcase'
 import { PETYAN, TANGARA } from './data/brands'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
@@ -40,6 +41,7 @@ export default function App() {
         <Hero />
         <Marquee />
         <Brands />
+        <Launches />
         <Piracanjuba />
         <PiracanjubaCatalog />
         <Whey />
