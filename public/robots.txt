@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://nogueira-representacao.netlify.app/sitemap.xml
+Sitemap: https://nogueira-representacao.vercel.app/sitemap.xml
