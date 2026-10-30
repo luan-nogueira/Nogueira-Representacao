@@ -56,7 +56,7 @@ function TiltEmblem() {
           className="absolute bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-mega text-gold"
           style={{ transform: 'translateX(-50%) translateZ(50px)' }}
         >
-          Campos dos Goytacazes — RJ
+          Desde 1998
         </span>
       </motion.div>
     </div>
@@ -73,7 +73,7 @@ export default function About() {
         </div>
 
         <div className="lg:col-span-7 lg:pl-8">
-          <Eyebrow>Nogueira Representações</Eyebrow>
+          <Eyebrow>Desde 1998</Eyebrow>
           <SplitHeading
             id="about-title"
             lines={[
@@ -85,7 +85,7 @@ export default function About() {
           />
           <Reveal delay={0.15}>
             <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-white/70">
-              A Nogueira Representações atua conectando grandes marcas ao mercado regional, desenvolvendo
+              Desde 1998, a Nogueira Representações atua conectando grandes marcas ao mercado regional, desenvolvendo
               relacionamentos comerciais sólidos e aproximando produtos de qualidade dos estabelecimentos e
               consumidores. Para empresários e estabelecimentos que querem trabalhar com marcas fortes, com o apoio
               de quem conhece o mercado regional.
@@ -106,7 +106,8 @@ export default function About() {
         </div>
       </div>
 
-      <div className="container-x relative mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 grid-cols-2 lg:mt-14 lg:grid-cols-4">
+      <div className="container-x relative mt-12 lg:mt-14">
+      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 lg:grid-cols-4">
         {VALUES.map((v, i) => (
           <Reveal key={v.t} delay={i * 0.08} y={30} className="group bg-ink p-4 transition-colors duration-700 hover:bg-[#0d1626] sm:p-6 md:p-7">
             <v.icon className="h-5 w-5 text-gold transition-transform duration-700 group-hover:-translate-y-1" strokeWidth={1.5} />
@@ -114,6 +115,7 @@ export default function About() {
             <p className="mt-2 text-[13px] leading-relaxed text-white/55 sm:text-[14px]">{v.d}</p>
           </Reveal>
         ))}
+      </div>
       </div>
 
       <div className="container-x relative">

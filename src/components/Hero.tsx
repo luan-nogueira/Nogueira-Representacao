@@ -90,7 +90,10 @@ export default function Hero() {
           <h1>
             <span className="mb-3 block overflow-hidden text-[12px] font-semibold uppercase tracking-mega text-white md:mb-6 md:text-[15px]">
               <motion.span className="block" {...line(0)}>
-                Nogueira Representações
+                Nogueira Representações{' '}
+                <span className="text-gold max-sm:mt-1 max-sm:block">
+                  <span className="max-sm:hidden">· </span>desde 1998
+                </span>
               </motion.span>
             </span>
             <span className="display block text-[clamp(32px,3.6vw,60px)]">

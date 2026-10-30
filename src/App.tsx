@@ -6,7 +6,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 import Piracanjuba from './components/Piracanjuba'
-import Products from './components/Products'
+import PiracanjubaCatalog from './components/PiracanjubaCatalog'
 import Whey from './components/Whey'
 import About from './components/About'
 import Region from './components/Region'
@@ -41,7 +41,7 @@ export default function App() {
         <Marquee />
         <Brands />
         <Piracanjuba />
-        <Products />
+        <PiracanjubaCatalog />
         <Whey />
         <BrandShowcase brand={TANGARA} />
         <BrandShowcase brand={PETYAN} />

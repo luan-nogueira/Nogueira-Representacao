@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col gap-3 py-8 text-[12px] text-white/40 md:flex-row md:items-center md:justify-between">
-          <p>© {year} Nogueira Representações. Todos os direitos reservados.</p>
+          <p>© {year} Nogueira Representações · desde 1998. Todos os direitos reservados.</p>
           <p>Piracanjuba, Tangará Química, Flop´s, Petyan, Supradely e Spaguetto pertencem aos respectivos titulares.</p>
         </div>
       </div>
